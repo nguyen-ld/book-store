@@ -9,8 +9,8 @@ import Layout from "@/layout";
 import AboutPage from "pages/client/about";
 import BookPage from "pages/client/book";
 import HomePage from "pages/client/home";
-import LoginPage from "pages/client/auth/login";
-import RegisterPage from "pages/client/auth/register";
+import LoginPage from "@/pages/client/auth/views/login";
+import RegisterPage from "@/pages/client/auth/views/register";
 
 import "styles/global.scss";
 
@@ -18,11 +18,9 @@ const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <Layout />,
+
 		children: [
-			{
-				path: "/home",
-				element: <HomePage />,
-			},
+			{ index: true, element: <HomePage /> },
 			{
 				path: "/about",
 				element: <AboutPage />,
