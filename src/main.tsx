@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 // react route setup
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { App } from "antd";
 
 import Layout from "@/layout";
 import AboutPage from "pages/client/about";
@@ -43,7 +44,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		{/* <Layout /> */}
-		<RouterProvider router={router} />
+		<App>
+			<RouterProvider router={router} />
+		</App>
 	</StrictMode>
 );

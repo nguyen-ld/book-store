@@ -1,21 +1,40 @@
-import { Button, Divider, Form, FormProps, Input } from "antd";
+import { App, Button, Divider, Form, FormProps, Input } from "antd";
+
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "../styles/register.scss";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { registerAPI } from "@/services/api";
 
 type FieldType = {
-	fullName?: string;
-	password?: string;
-	email?: string;
-	phone?: string;
+	fullName: string;
+	password: string;
+	email: string;
+	phone: string;
 };
 
 const RegisterPage = () => {
 	const [isSubmit, setIsSubmit] = useState(false);
+	const { message } = App.useApp();
+	const navigate = useNavigate();
 
-	const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-		console.log("Success:", values);
+	const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+		setIsSubmit(true);
+
+		const { fullName, email, password, phone } = values;
+
+		const res = await registerAPI(fullName, email, password, phone);
+
+		if (res.data) {
+			// success
+			message.success("Đăng ký tài khoản thành công!");
+			navigate("/login");
+		} else {
+			// error
+			message.error(res.message);
+		}
+
+		setIsSubmit(false);
 	};
 
 	return (
@@ -116,7 +135,7 @@ const RegisterPage = () => {
 							>
 								Đã có tài khoản ?{" "}
 								<span>
-									<Link to=""> Đăng Nhập </Link>
+									<Link to="/login"> Đăng Nhập </Link>
 								</span>
 							</p>
 						</div>

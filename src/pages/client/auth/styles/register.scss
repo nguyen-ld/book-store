@@ -3,51 +3,45 @@ $color-bg-main: #f3f7fb;
 $color-bg-white: #fff;
 $shadow-light: 0 0 10px rgba(0, 0, 0, 0.1);
 $radius: 8px;
-$padding-default: 25px;
 $color-blue: #1a73e8;
 
-// Mixin
-@mixin flex-center($gap: 0) {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: $gap;
-}
-
-// Main
-.main {
+.register-page {
 	background-color: $color-bg-main;
-	min-height: 100vh;
 
 	.container {
-		@include flex-center();
-		padding-top: 60px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		max-width: 80rem;
+		min-height: 100vh;
+		// width: 100%;
+		padding: 0 2rem;
+		margin: 0 auto;
 	}
-
-	.wrapper {
-		width: 100%;
-		max-width: 380px;
-		background-color: $color-bg-white;
-		padding: $padding-default;
-		border-radius: $radius;
-		box-shadow: $shadow-light;
+	// Main
+	.main {
+		.wrapper {
+			max-width: 26rem;
+			width: 100%;
+			margin: 2rem auto;
+			padding: 2rem 2.5rem;
+			background-color: $color-bg-white;
+			border-radius: $radius;
+			box-shadow: $shadow-light;
+		}
 	}
-
 	.text {
 		text-transform: capitalize;
 		margin-bottom: 20px;
-	}
 
-	.horizontal-line {
-		@include flex-center(15px);
-	}
-	.text-normal {
-		a {
-			color: $color-blue;
-			text-decoration: none;
+		&-normal {
+			a {
+				color: $color-blue;
+				text-decoration: none;
 
-			&:hover {
-				text-decoration: underline;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 	}
