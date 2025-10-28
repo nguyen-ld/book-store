@@ -24,7 +24,9 @@ const LoginPage = () => {
 
 		const res = await loginAPI(username, password);
 
-		if (res.data) {
+		if (res?.data) {
+			console.log(res.data);
+
 			// success
 			setIsAuthenticated(true);
 			setUser(res.data.user);

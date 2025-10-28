@@ -27,3 +27,21 @@ export const loginAPI = (username: string, password: string) => {
 		}
 	);
 };
+export const fetchAccountAPI = () => {
+	const urlBackend = "/api/v1/auth/account";
+	return axios.get<IBackendRes<IFetchAccount>>(urlBackend, {
+		headers: {
+			delay: 1000,
+		},
+	});
+};
+
+export const logoutAPI = () => {
+	const urlBackend = "/api/v1/auth/logout";
+	return axios.post<IBackendRes<IRegister>>(urlBackend);
+};
+
+export const getUsersAPI = (query: string) => {
+	const urlBackend = `/api/v1/user?${query}`;
+	return axios.get<IBackendRes<IModelPaginate<IUserTable>>>(urlBackend);
+};
